@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>NIFI基本概念 | BlueEye</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一. NiFi是什么Apache NiFi 是一个易于使用, 功能强大且可靠的系统, 用于处理和分发数据。可以自动化管理系统间的数据流。它使用高度可配置的指示图来管理数据路由, 转换和系统中介逻辑, 支持从多种数据源动态拉取数据。NiFi 原来是 NSA(美国国家安全局) 的一个项目, 目前代码已经开源, 是 Apache的顶级项目之一。 NiFi 是基于 Java 的, 使用 Maven 构建管">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NIFI基本概念">
+<meta property="og:url" content="http://y757982471.github.io.git/2022/08/31/NiFi%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/index.html">
+<meta property="og:site_name" content="BlueEye">
+<meta property="og:description" content="一. NiFi是什么Apache NiFi 是一个易于使用, 功能强大且可靠的系统, 用于处理和分发数据。可以自动化管理系统间的数据流。它使用高度可配置的指示图来管理数据路由, 转换和系统中介逻辑, 支持从多种数据源动态拉取数据。NiFi 原来是 NSA(美国国家安全局) 的一个项目, 目前代码已经开源, 是 Apache的顶级项目之一。 NiFi 是基于 Java 的, 使用 Maven 构建管">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-08-31T02:18:09.361Z">
+<meta property="article:modified_time" content="2022-08-31T02:22:55.817Z">
+<meta property="article:author" content="CR">
+<meta property="article:tag" content="BigData">
+<meta property="article:tag" content="NIFI">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="BlueEye" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/f.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/head.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">CR</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=1297941&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/VBA/" style="font-size: 10px;">-VBA</a> <a href="/tags/algorithm/" style="font-size: 10px;">-algorithm</a> <a href="/tags/BigData/" style="font-size: 10px;">BigData</a> <a href="/tags/NIFI/" style="font-size: 10px;">NIFI</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m a developer.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/head.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap">
+<article id="post-NiFi基本概念" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/08/31/NiFi%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="article-date">
+  	<time datetime="2022-08-31T02:18:09.361Z" itemprop="datePublished">2022-08-31</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      NIFI基本概念
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BigData/" rel="tag">BigData</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NIFI/" rel="tag">NIFI</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一-NiFi是什么"><a href="#一-NiFi是什么" class="headerlink" title="一. NiFi是什么"></a>一. NiFi是什么</h2><p>Apache NiFi 是一个易于使用, 功能强大且可靠的系统, 用于处理和分发数据。可以自动化管理系统间的数据流。它使用高度可配置的指示图来管理数据路由, 转换和系统中介逻辑, 支持从多种数据源动态拉取数据。NiFi 原来是 NSA(美国国家安全局) 的一个项目, 目前代码已经开源, 是 Apache的顶级项目之一。</p>
+<p>NiFi 是基于 Java 的, 使用 Maven 构建管理。NiFi 基于 Web 方式工作, 后台在服务器上进行调度。用户可以将数据处理定义为一个流程, 然后进行处理, NiFi 后台具有数据处理引擎, 任务调度等组件。</p>
+<p>自企业拥有多个系统开始, 一些系统会有数据生成, 一些系统要消费数据, 而不同系统间的数据流通问题就出现了。简单的说, NiFi 就是为了解决不同系统间数据自动流通问题而建立的。</p>
+<p>数据流DataFlow要面临的一些挑战</p>
+<span id="more"></span>
+
+<ul>
+<li>Systems fail</li>
+</ul>
+<p>系统调用失败, 网络故障, 磁盘故障, 软件崩溃, 人为事故等。</p>
+<ul>
+<li>Data access exceeds capacity to consum</li>
+</ul>
+<p>数据访问超出了消耗能力。有时给定的数据源可能会超过处理链或交付链的某些部分的处理能力, 而只要一个环节出现问题, 整个流程都会 受到影响。</p>
+<ul>
+<li>Boundary conditions are mere suggestions</li>
+</ul>
+<p>超出边界问题, 总是会得到太大, 太小, 太快, 太慢, 损坏, 错误或格式错误的数据。</p>
+<ul>
+<li>What is noise one day becomes signal the next</li>
+</ul>
+<p>现实业务或需求变更快, 设计新的数据处理流程或者修改已有的流程必须要迅速。</p>
+<ul>
+<li>Systems evolve at different rates</li>
+</ul>
+<p>给定的系统所使用的协议或数据格式可能随时改变, 而且常常跟周围其他系统无关。DataFlow 的存在就是为了连接这种大规模分布的, 松散的, 甚至根本不是设计用来一起工作的组件系统。</p>
+<ul>
+<li>Compliance and security</li>
+</ul>
+<p>法律, 法规和政策发生变化。企业对企业协议的变化。系统到系统和系统到用户的交互必须是安全的, 可信的, 负责的。</p>
+<ul>
+<li>Continuous improvement occurs in production</li>
+</ul>
+<p>通常不能在测试环境中完全模拟生产环境</p>
+<p>多年来, 数据流一直是架构中不可避免的的问题之一。现在有许多活跃的, 快速发展的技术, 使得 DataFlow 对想要成功的企业更加重要。此外, 合规性, 隐私性和安全性所需的严格程度也在不断提高。NiFi 旨在帮助解决这些现代数据流挑战。</p>
+<h2 id="二-NiFi-核心概念"><a href="#二-NiFi-核心概念" class="headerlink" title="二. NiFi 核心概念"></a>二. NiFi 核心概念</h2><p>NiFi 的基本设计概念与基于流程的编程 FBP(Flow Bases Programing)的主要思想密切相关。以下是一些主要的 NiFi 概念以及与 FBP 的关系:</p>
+<table>
+<thead>
+<tr>
+<th>NiFi术语</th>
+<th>FBP Term</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FlowFile</td>
+<td>信息包(Information Packet)</td>
+<td>FlowFile 表示在系统中移动的每个对象, 对于每个 FlowFile, NiFi 都会记录它的一个属性键值对和0个或多个字节内容(FlowFile有attribute和content)</td>
+</tr>
+<tr>
+<td>FlowFile Processer</td>
+<td>黑盒(Black Box)</td>
+<td>NiFi 核心组件, 处理器可以访问给定 FlowFile 的属性及其内容。处理器可以对给定工作单元中的零或多个 FlowFile 进行操作, 并提交该工作或回滚该工作。</td>
+</tr>
+<tr>
+<td>Connection</td>
+<td>缓冲区(Bounded Buffer)</td>
+<td>Connections 用来连接 Processer, 它们充当队列并允许各种进程以不同的速率进行交互。这些队列可以动态地进行优先级排序, 并且可以在负载均衡设置上限, 从而实现反压机制。</td>
+</tr>
+<tr>
+<td>FlowFile Controller</td>
+<td>调度器(Scheduler)</td>
+<td>FlowFile Controller维护流程如何连接, 并管理和分配所有流程使用的线程。流控制器充当代理, 促进处理器之间流文件的交换。</td>
+</tr>
+<tr>
+<td>Process Group</td>
+<td>分支网络(subnet)</td>
+<td>Process Group 里是一组特定的流程和连接, 可以通过输入端口接受数据并通过输出端口发送数据, 这样我们在进程组里简单地组合组件, 就可以得到一个全新功能的组件。</td>
+</tr>
+</tbody></table>
+<p>此设计模型类似于SEDA(分阶段事件驱动架构), 有助于 NiFi 成为非常有效的构建功能强大且可扩展的数据流平台。其中一些好处包括:</p>
+<ul>
+<li>有助于处理器有向图的可视化创建和管理</li>
+<li>本质上是异步的, 允许非常高的吞吐量和足够的自然缓冲</li>
+<li>提供高并发模型, 开发人员不必担心并发的复杂性</li>
+<li>促进内聚和松散耦合组件的开发, 然后可以在其他环境中重复使用并方便单元测试</li>
+<li>资源受限的连接(流程中可配置connections)使得背压和压力释放等关键功能非常自然和直观</li>
+<li>错误处理变得像基本逻辑一样自然, 而不是粗粒度的全部捕获</li>
+<li>数据进入和退出系统的点, 以及数据如何流动, 都很容易理解和跟踪</li>
+</ul>
+<h2 id="三-NiFi-架构"><a href="#三-NiFi-架构" class="headerlink" title="三. NiFi 架构"></a>三. NiFi 架构</h2><ul>
+<li>WebServer(网络服务器)</li>
+</ul>
+<p>Web 服务器的目的是承载 NiFi 基于 Http 的命令和控制 API。</p>
+<ul>
+<li>Flow Controller(流控制器)</li>
+</ul>
+<p>是整个操作的核心, 为将要运行的组件提供线程, 管理调度。</p>
+<ul>
+<li>Extensions(扩展)</li>
+</ul>
+<p>有各种类型的 NiFi 扩展, NiFi 的扩展也是在 JVM 中执行的。</p>
+<ul>
+<li>FlowFile Repository(流文件存储库)</li>
+</ul>
+<p>对于给定一个流中正在活动的FlowFile, FlowFile Repository 就是 NiFi 保持跟踪这个 FlowFile的状态的地方。<br>FlowFile Repository的实现是可插拔的(多种选择, 可配置, 甚至可以自己实现) 默认实现是使用Write-Ahead Log技术写到指定磁盘目录。</p>
+<ul>
+<li>Content Repository(内容存储库)</li>
+</ul>
+<p>Content Repository 是给定 FlowFile 的实际内容字节存储的地方。Content Repository 的实现是可插拔的。默认方法是一种相当简单的机制, 它将数据块存储在文件系统中, 可以指定多个文件系统存储位置, 以便获得不同的物理分区来减少任何单个卷上的争用。(所以环境最佳实践时可配置多个目录, 挂载不同磁盘, 提高IO)</p>
+<ul>
+<li>Provenance Repository(源头存储库)</li>
+</ul>
+<p>Provenance Repository 是存储所有事件数据的地方。Provenance Repository的实现是可插拔的, 默认实现是使用一个或多个物理磁盘卷。在每个位置内的事件数据都是被索引并可搜索的。</p>
+<p>NiFi 也能够在集群中运行。</p>
+<ul>
+<li><p>Cluster Coordinator: 集群协调器, 用来管理节点添加和删除的操作逻辑</p>
+</li>
+<li><p>Primary Node: 主节点, 用来运行一些不适合在集群中运行的组件</p>
+</li>
+<li><p>Zookeeper Client: zk节点</p>
+</li>
+</ul>
+<p>从 NiFi 1.0版本开始, NiFi 集群采用了 Zero-Master Clustering 模式。</p>
+<ul>
+<li>NiFi 集群中的每个节点对数据执行相同的任务, 但每个节点都在不同的数据集上运行。</li>
+<li>Apache Zookeeper 选择单个节点作为集群协调器, Zookeeper 自动处理故障转移。</li>
+<li>所有集群节点都会向集群协调器发送心跳报告和状态信息, 集群协调器负责断开和连接节点。</li>
+<li>每个集群有一个主节点, 主节点也由Zookeeper选举产生。</li>
+<li>可以通过任何节点的用户节点(UI)与 NiFi 集群进行交互, 并且任何更改都会复制到集群中的所有节点上。</li>
+</ul>
+<h2 id="四-NiFi-的性能"><a href="#四-NiFi-的性能" class="headerlink" title="四. NiFi 的性能"></a>四. NiFi 的性能</h2><p>NiFi 的设计目的是充分利用其运行的底层主机系统的能力。这种资源的最大化在CPU和磁盘方面尤其明显。</p>
+<h3 id="For-IO"><a href="#For-IO" class="headerlink" title="For IO"></a>For IO</h3><p>不同系统不同配置可预期的吞吐量或延迟会有很大差异, 具体取决于系统的配置方式。<br>对于一些具体和广泛适用的地方, 请考虑使用现成的默认实现, 这些实现都是持久的, 有保证的让数据流传递, 并且是使用本地磁盘来存储。<br>假设在典型服务器中的普通磁盘上每秒读写速率大约为50MB, 对于大型数据流, NiFi 能够达到每秒100MB或更多的吞吐量。<br>因为预期添加到 NiFi 的每个物理分区和 content repository都会出现线性增长。</p>
+<h3 id="For-CPU"><a href="#For-CPU" class="headerlink" title="For CPU"></a>For CPU</h3><p>Flow Controller 充当引擎的角色, 指示待定处理器何时可以被分配线程去执行。<br>Flow Controller 编译处理器, 并在任务执行后立即释放线程。<br>可以为Flow Controller 提供一个配置值, 表示它维护的各种线程池的可用线程数。<br>理想的线程数取决于主机系统内核数量, 系统中是否正在运行其他服务, 以及流程中要处理的流的性质。<br>对于典型的IO大流量, 合理的做法是让多线程可用。</p>
+<h3 id="For-RAM"><a href="#For-RAM" class="headerlink" title="For RAM"></a>For RAM</h3><p>NiFi 在 JVM 中运行, 因此受限于 JVM 提供的内存。<br>GC 成为限制实际堆总大小以及优化应用程序运行的一个非常重要的因素。<br>NiFi 作业在定期读取相同内容的时候可能会占用大量的IO, 可以配置足够大的内存和磁盘以优化性能。</p>
+<h2 id="五-NiFi-的关键特性"><a href="#五-NiFi-的关键特性" class="headerlink" title="五. NiFi 的关键特性"></a>五. NiFi 的关键特性</h2><h3 id="流管理"><a href="#流管理" class="headerlink" title="流管理"></a>流管理</h3><ul>
+<li>保证交付</li>
+</ul>
+<p>NiFi的核心理念是: 即使在非常高的规模下, 也必须保证交付。这是通过有效地使用专门构建的Write-Ahead Log和Content repository来实现的。它们一起被设计成具备允许非常高的事务速率, 有效的负载分布, 写时复制和发挥传统磁盘读&#x2F;写的优势。</p>
+<ul>
+<li>数据缓冲 背压和压力释放</li>
+</ul>
+<p>NiFi 支持缓冲所有排队的数据, 以及在这些队列达到指定限制时提供背压的能力(背压对象阈值, 背压数据大小阈值), 或在数据达到指定期限(其值失效)时, 老化并丢弃数据的能力。</p>
+<ul>
+<li>队列优先级</li>
+</ul>
+<p>NiFi 允许设置一个或多个优先级方案, 用于如何从队列中检索数据。默认情况是先进先出, 但有时应该首先提取最新的数据(后进先出), 最大的数据先出或其他定制方案。</p>
+<ul>
+<li>特殊流质量(延迟和吞吐量)</li>
+</ul>
+<p>可能在数据流的某些节点上数据至关重要, 不容丢失, 并且在某些时刻这些数据需要在几秒钟就处理完毕传向下一节点才有意义。对于这些方面 NiFi 也可以做到细粒度的配置。</p>
+<h3 id="易用性"><a href="#易用性" class="headerlink" title="易用性"></a>易用性</h3><ul>
+<li>可视化流程</li>
+</ul>
+<p>数据流的处理逻辑和过程可能会非常复杂。能够可视化这些流程并以可视的方式来表达它们可以极大地帮助用户降低数据流的复杂度, 并确定哪些地方需要简化。NiFi 可以实现数据流的可视化建立, 而且是实时的。并不是”设计, 部署”, 它更像泥塑。如果对数据流进行了更改, 更改就会立即生效, 并且这些更改是细粒度的和组件隔离的。用户不需要为了进行某些特定修改而停止整个流程或流程组。</p>
+<ul>
+<li>流模板</li>
+</ul>
+<p>FlowFile 往往是高度模式化的, 虽然通常有许多不同的方法来解决问题, 但能够共享这些最佳实践却大有帮助。流程模板允许设计人员构建和发布他们的流程设计, 并让其他人从中受益和复用。</p>
+<ul>
+<li>数据起源追踪</li>
+</ul>
+<p>在对象流经系统时, 甚至在扇入,扇出, 转换等过程中, NiFi 会自动记录, 索引并提供可用的源数据。这些信息在故障排除, 优化以及其他方案中变得极为关键。</p>
+<ul>
+<li>可以记录和重放的, 细粒度的历史记录缓冲区</li>
+</ul>
+<p>NiFi 的Content Repository旨在充当历史数据的滚动缓冲区。数据仅在Content Repository老化或需要空间时才会被删除。Content Repository 与 Data Provenance 能力相结合, 为在对象的生命周期中的特定点实现查看内容, 内容下载和内容重放等功能提供了非常有用的基础。</p>
+<h3 id="灵活的缩放模型"><a href="#灵活的缩放模型" class="headerlink" title="灵活的缩放模型"></a>灵活的缩放模型</h3><ul>
+<li>水平扩展(Clustering)</li>
+</ul>
+<p>NiFi 的设计是可集群, 可横向扩展的。如果配置单个节点并将其配置为每秒处理数百MB的数据, 那么可以相应的将集群配置为每秒处理GB级的数据。但这也带来了 NiFi 与其获取数据的系统之间的负载平衡和故障转移的挑战。采用基于异步排队的协议(如kafka)可以提供帮助解决这些问题。</p>
+<ul>
+<li>放大和缩小</li>
+</ul>
+<p>NiFi 可以非常灵活的放大和缩小。从 NiFi 框架的角度来看, 在增加吞吐量这方面, 可以在配置时增加”调度”选项卡下处理器的并发任务数。这允许更多线程同时执行, 从而提供更高的吞吐量。另一方面, 也可以完美的将 NiFi 缩小到适合在边缘设备上运行, 因为硬件资源有限, 所需的占用空间很小, 这种情况可以使用MINIFI。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/08/31/%E6%A0%B9%E6%8D%AE%E7%AB%AF%E5%8F%A3%E5%8F%B7%E6%9F%A5PID/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/08/31/VBA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">VBA学习笔记</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 CR
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
